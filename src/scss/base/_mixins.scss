@@ -1,19 +1,37 @@
 @use 'base/variables' as v;
 
 /** Media Queries **/
-@mixin telefono {
-    @media (min-width: v.$telefono) {
+@mixin mediaq ($size) {
+    @media (min-width: $size){
         @content;
     }
 }
-@mixin tablet {
-    @media (min-width: v.$tablet) {
-        @content;
+
+@mixin auth-pagina($color){
+    margin-top: 5rem;
+
+    .uptask{
+        background: linear-gradient(to right, $color 0%, lighten($color, 30%) 100%);
+        color:transparent;
+        background-clip: text;
+        text-align: center;
+        font-size: 7rem;
+
+
+        @include mediaq(v.$tablet){
+            font-size: 10rem;
+            
+        }
     }
-}
-@mixin desktop {
-    @media (min-width: v.$desktop) {
-        @content;
+
+    input[type="submit"]{
+        @include boton ($color, v.$blanco );
+    }
+
+    .acciones{
+        a{
+            color:$color;
+        }
     }
 }
 
@@ -21,21 +39,34 @@
 @mixin boton($bgColor, $colorTexto) {
     background-color: $bgColor;
     padding: 1.5rem 4rem;
-    color: $colorTexto;
-    font-size: 1.6rem;
+    color: darken( $colorTexto, 10% );
+    margin-top: 2rem;
+    font-size: 2rem;
+    font-weight: 400;
     display: inline-block;
     font-weight: 700;
     border: none;
-    transition-property: background-color;
+    transition-property: all;
     transition-duration: .3s;
     text-align: center;
     display: block;
     width: 100%;
-    @include tablet {
+    margin: 5rem 0;
+    border-radius: 5px;
+    -webkit-box-shadow: 10px 10px 29px 7px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 29px 7px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 29px 7px rgba(0,0,0,0.75);
+
+    @include mediaq(v.$tablet){
         width: auto;
     }
+
     &:hover {
         background-color: darken( $bgColor, 10% );
+        color: $colorTexto;
+        -webkit-box-shadow: 10px 10px 5px 4px rgba(0,0,0,0.75);
+        -moz-box-shadow: 10px 10px 5px 4px rgba(0,0,0,0.75);
+        box-shadow: 10px 10px 5px 4px rgba(0,0,0,0.75);
         cursor: pointer;
     }
 }
