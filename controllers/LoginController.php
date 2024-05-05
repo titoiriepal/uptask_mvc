@@ -12,6 +12,8 @@ class LoginController{
         if($_SERVER["REQUEST_METHOD"] === "POST"){
             
         }
+
+        //Mostrar la vista
         $router->render('auth/login',[
             'titulo' => 'Iniciar Sesion',
             'estilo' => 'login'
@@ -29,6 +31,7 @@ class LoginController{
             
         }
 
+        //Mostrar la vista
         $router->render('auth/crear',[
             'titulo' => 'Crea tu cuenta',
             'estilo' => 'crear'
@@ -42,27 +45,43 @@ class LoginController{
             
         }
 
+        //Mostrar la vista
         $router->render('auth/olvide',[
             'titulo' => 'Olvidaste tu password',
             'estilo' => 'olvide'
         ]);
     }
 
-    public static function reestablecer(){
-        echo "Desde reestablecer password";
+    public static function reestablecer(Router $router){
 
         if($_SERVER["REQUEST_METHOD"] === "POST"){
             
         }
+
+        //Mostrar la vista
+        $router->render('auth/reestablecer',[
+            'titulo' => 'Reestablecer Password',
+            'estilo' => 'reestablecer'
+        ]);
+}
+
+    public static function mensaje(Router $router){
+
+
+        //Mostrar la vista
+        $router->render('auth/mensaje',[
+            'titulo' => 'Cuenta creada',
+            'estilo' => 'mensaje'
+        ]);
     }
 
-    public static function mensaje(){
-        echo "Desde Mensaje";
+    public static function confirmar(Router $router){
+        
 
-    }
-
-    public static function confirmar(){
-        echo "Desde Confirmar";
-
+        //Mostrar la vista
+        $router->render('auth/confirmar',[
+            'titulo' => 'Cuenta activada',
+            'estilo' => 'confirmar'
+        ]);
     }
 }

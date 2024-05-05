@@ -7,7 +7,7 @@
         <p class="descripcion-pagina">Crear una nueva cuenta</p>
         
 
-        <form action="/" class="formulario" methdo="POST">
+        <form action="/crear" class="formulario" methdo="POST">
 
             <div class="campo">
                 <label for="nombre">Nombre</label>

@@ -15,3 +15,18 @@
     @include m.auth-pagina(v.$rosa);
 
 }
+
+.reestablecer{
+    @include m.auth-pagina(v.$azul);
+
+}
+
+.mensaje{
+    @include m.auth-pagina(v.$naranja);
+
+}
+
+.confirmar{
+    @include m.auth-pagina(v.$indigo);
+
+}

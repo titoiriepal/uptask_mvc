@@ -28,11 +28,11 @@
         @include boton ($color, v.$blanco );
     }
 
-    .acciones{
-        a{
-            color:$color;
-            font-weight: 700;
-        }
+    .acciones a, a{
+        
+        color:$color;
+        font-weight: 700;
+        
     }
 }
 
