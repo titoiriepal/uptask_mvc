@@ -5,3 +5,13 @@
     @include m.auth-pagina(v.$cyan);
 
 }
+
+.crear{
+    @include m.auth-pagina(v.$morado);
+
+}
+
+.olvide{
+    @include m.auth-pagina(v.$rosa);
+
+}

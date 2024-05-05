@@ -13,7 +13,8 @@ class LoginController{
             
         }
         $router->render('auth/login',[
-            'titulo' => 'Iniciar Sesion'
+            'titulo' => 'Iniciar Sesion',
+            'estilo' => 'login'
         ]);
     }
 
@@ -29,16 +30,22 @@ class LoginController{
         }
 
         $router->render('auth/crear',[
-            'titulo' => 'Crea tu cuenta'
+            'titulo' => 'Crea tu cuenta',
+            'estilo' => 'crear'
         ]);
     }
 
-    public static function olvide(){
-        echo "Desde recuperar password";
+    public static function olvide(Router $router){
+        
 
         if($_SERVER["REQUEST_METHOD"] === "POST"){
             
         }
+
+        $router->render('auth/olvide',[
+            'titulo' => 'Olvidaste tu password',
+            'estilo' => 'olvide'
+        ]);
     }
 
     public static function reestablecer(){
