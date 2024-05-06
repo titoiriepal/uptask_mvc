@@ -5,9 +5,13 @@
 
     <div class="contenedor-sm">
         <p class="descripcion-pagina">Crear una nueva cuenta</p>
+
+        <?php 
+        include_once __DIR__ . '/../templates/alertas.php';
+    ?>
         
 
-        <form action="/crear" class="formulario" methdo="POST">
+        <form action="/crear" class="formulario" method="POST">
 
             <div class="campo">
                 <label for="nombre">Nombre</label>
@@ -16,6 +20,7 @@
                     id="nombre"
                     placeholder="Tu Nombre"
                     name="nombre"
+                    value = "<?php echo $usuario->nombre;?>"
                 />
             </div>
 
@@ -25,7 +30,8 @@
                     type="email"
                     id="email"
                     placeholder="Tu email"
-                    name="mail"
+                    name="email"
+                    value = "<?php echo $usuario->email;?>"
                 />
             </div>
 

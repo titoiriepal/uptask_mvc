@@ -27,7 +27,7 @@ $router->post('/reestablecer', [LoginController::class, 'reestablecer']);
 
 //CONFIRMACIÓN DE CUENTA
 $router->get('/mensaje', [LoginController::class, 'mensaje']);
-$router->get('/confirmar', [LoginController::class, 'confirmar']);
+$router->get('/confirmar-cuenta', [LoginController::class, 'confirmar']);
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();
