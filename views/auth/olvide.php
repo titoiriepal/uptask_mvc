@@ -5,8 +5,11 @@
     <div class="contenedor-sm">
         <p class="descripcion-pagina">Recupera tu acceso a UpTask</p>
         
+        <?php 
+            include_once __DIR__ . '/../templates/alertas.php';
+        ?>
 
-        <form action="/olvide" class="formulario" methdo="POST">
+        <form action="/olvide" class="formulario" method="POST">
 
             <div class="campo">
                 <label for="email">Email</label>
@@ -14,7 +17,7 @@
                     type="email"
                     id="email"
                     placeholder="Introduce Tu email"
-                    name="mail"
+                    name="email"
                 />
             </div>
 
