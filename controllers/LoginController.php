@@ -14,7 +14,7 @@ class LoginController{
         $alertas = [];
         if($_SERVER["REQUEST_METHOD"] === "POST"){
             $auth = new Usuario($_POST);
-            $alertas = $auth->validarEmail;
+            $alertas = $auth->validarEmail();
 
             if(empty($alertas)){
                 //Verificamos que el usuario exista:
@@ -32,7 +32,7 @@ class LoginController{
                         $_SESSION['email'] = $usuario->email;
                         $_SESSION['login'] = true;
 
-                        header('Location: /proyectos');
+                        header('Location: /dashboard');
                     }
                 }
             }
