@@ -23,4 +23,19 @@
             text-align: center;
         }
     }
+
+    .formulario{
+        input:not([type="submit"]){
+            background-color: v.$blanco;
+
+        }
+
+        input[type="submit"]{
+            @include m.boton (v.$indigo, v.$blanco);
+            padding: 1.3rem;
+            text-transform: uppercase;
+            
+            
+        }
+    }
 }
