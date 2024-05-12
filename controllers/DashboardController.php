@@ -10,10 +10,14 @@ class DashboardController{
         session_start();
 
         isAuth();
+        //Obtenemos todos los proyectos del usuario que inició sesion.
+        $proyectos = Proyecto::belongsTo('propietarioID', $_SESSION['id']);
+
 
         $router->render('dashboard/index',[
             'titulo' => 'Tus Proyectos',
-            'class' => 'proyectos'
+            'class' => 'proyectos',
+            'proyectos' => $proyectos
         ]);
     }
 
@@ -37,7 +41,7 @@ class DashboardController{
                 $resultado = $proyecto->guardar();
 
                 if($resultado){
-                    header("Location: /dashboard");
+                    header("Location: /proyecto?url=" .  $proyecto->url);
                     //header("Location: /proyecto?url={$proyecto->url}");
 
                 }else{
@@ -55,6 +59,39 @@ class DashboardController{
         ]);
     }
 
+    public static function proyecto(Router $router){
+
+        session_start();
+        isAuth();
+
+        $url = $_GET['url'];
+        
+
+        if (!$url){
+            header("Location: /dashboard");
+        }
+        $proyecto = Proyecto::where('url', $url);
+        
+        
+        if(!$proyecto || $proyecto->activo === '0'){
+            header("Location: /dashboard");
+        }
+
+        //Revisar que la persona que visita el proyecto es quién lo creo
+        if($proyecto->propietarioId !== $_SESSION['id']){
+            header("Location: /dashboard");
+        }
+
+
+
+
+
+
+        $router->render('dashboard/proyecto',[
+            'titulo' => $proyecto->proyecto
+        ]);
+
+    }
     public static function perfil(Router $router) {
         session_start();
 
