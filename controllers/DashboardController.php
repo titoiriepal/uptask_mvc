@@ -18,7 +18,8 @@ class DashboardController{
             'titulo' => 'Tus Proyectos',
             'class' => 'proyectos',
             'proyectos' => $proyectos,
-            'propietarioId' => $_SESSION['id']
+            'propietarioId' => $_SESSION['id'],
+            'script' => '<script src="/build/js/dashboard.js"></script>'
         ]);
     }
 
@@ -89,7 +90,8 @@ class DashboardController{
 
 
         $router->render('dashboard/proyecto',[
-            'titulo' => $proyecto->proyecto
+            'titulo' => $proyecto->proyecto,
+            'script' => '<script src="/build/js/tareas.js"></script>'
         ]);
 
     }

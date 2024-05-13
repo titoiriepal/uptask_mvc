@@ -39,27 +39,36 @@
 
 @mixin boton($bgColor, $colorTexto) {
     background-color: $bgColor;
-    padding: 1.5rem 4rem;
+    padding: 1rem 2rem;
     color: darken( $colorTexto, 10% );
-    margin-top: 2rem;
-    font-size: 2rem;
+    margin-top: 1rem;
+    font-size: 1.4rem;
     font-weight: 400;
     display: inline-block;
-    font-weight: 700;
     border: none;
     transition-property: all;
     transition-duration: .3s;
     text-align: center;
     display: block;
     width: 100%;
-    margin: 5rem 0;
+    margin: 2rem 0;
     border-radius: 5px;
     -webkit-box-shadow: 10px 10px 29px 7px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 10px 29px 7px rgba(0,0,0,0.75);
     box-shadow: 10px 10px 29px 7px rgba(0,0,0,0.75);
 
+    @include mediaq(v.$telefono){
+        font-size: 1.4rem;
+        margin-top: 1.2rem;
+        padding: 1.2rem 3rem;  
+        font-weight: bold;;  
+    }
+
     @include mediaq(v.$tablet){
         width: auto;
+        font-size: 1.8rem;
+        margin-top: 1.6rem;
+        padding: 1.5rem 4rem; 
     }
 
     &:hover {

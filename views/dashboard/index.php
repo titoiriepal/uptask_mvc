@@ -41,4 +41,3 @@
     include_once __DIR__ . '/footer-dashboard.php'; 
 ?>
 
-<script src="/build/js/app.js"></script>

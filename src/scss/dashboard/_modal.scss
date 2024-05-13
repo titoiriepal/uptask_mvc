@@ -1,0 +1,96 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.modal{
+    position:absolute;
+    background-color: rgb( 0 0 0 /.8);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+
+    .formulario{
+        max-width: 60rem;
+        background-color: v.$blanco;
+        padding: 2rem;
+        margin: 0 auto;
+        transform: translateY(-80rem);
+        transition: all 1000ms ease-out;
+        opacity: 0;
+        border-radius: 8px;
+        border: 1rem solid v.$naranja;
+
+        legend{
+            font-size: 2rem;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            display:block;
+        }
+
+        label{
+            flex: 0 0 5rem;
+            font-size: 1rem;
+            @include m.mediaq(v.$telefono){
+                flex: 0 0 7rem;
+                font-size: 1.4rem;
+            }
+
+            @include m.mediaq(v.$tablet){
+                flex: 0 0 10rem;
+                font-size: 1.8rem;
+                
+            }
+        }
+
+        input{
+            padding: .5rem;
+            font-size: 1rem;
+
+            @include m.mediaq(v.$telefono){
+                font-size: 1.4rem;
+                
+            }
+
+            @include m.mediaq(v.$tablet){
+                
+                font-size: 1.8rem;
+            }
+        }
+
+        .opciones{
+
+            @include m.mediaq(v.$tablet){
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+        }
+
+        .submit-nueva-tarea{
+            @include m.boton (v.$indigo, v.$blanco);
+            margin: 2rem 0;
+        }
+
+        .cerrar-modal{
+            @include m.boton (v.$rojo, v.$blanco);
+            margin: 2rem 0;
+        }
+
+        &.animar{
+            position:relative;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 1;
+        }
+
+        &.cerrar{
+            transform: translateY(-300%);
+            opacity: 0;
+            
+        }
+
+    }
+}

@@ -1,7 +1,6 @@
-let proyectos;
-const proyectosActivos =[];
-const proyectosInactivos =[];
-
+let proyectos = [];
+let proyectosActivos = [];
+let proyectosInactivos = [];
 
 document.addEventListener('DOMContentLoaded', function() {
     iniciarApp();
@@ -44,7 +43,6 @@ async function traerProyectos(){
             body:datos
         });
         proyectos = await resultado.json();
-        return proyectos;
         
     } catch (error) {
         console.log(error);
