@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../includes/app.php';
 
+use Controllers\ApiController;
 use Controllers\DashboardController;
 use Controllers\LoginController;
 use MVC\Router;
@@ -37,6 +38,11 @@ $router->get('/crear-proyecto', [DashboardController::class, 'crear']);
 $router->post('/crear-proyecto', [DashboardController::class, 'crear']);
 $router->get('/proyecto', [DashboardController::class, 'proyecto']);
 $router->get('/perfil', [DashboardController::class, 'perfil']);
+
+
+/*********************ZONA API *************************************************/
+
+$router->post('/api/proyectos', [ApiController::class, 'allProyects']);
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();

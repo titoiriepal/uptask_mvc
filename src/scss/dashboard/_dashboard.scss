@@ -39,3 +39,38 @@
         }
     }
 }
+
+.selected {
+
+    @include m.mediaq(500px){
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    @include m.mediaq(v.$desktop){
+        justify-content: space-around;
+    }
+
+
+    .option {
+        margin: 2rem 0;
+
+        input, label{
+            &:hover{
+                cursor:pointer;
+            }
+        }
+
+
+        input[type=radio]:checked{
+            
+            &+ label{
+                font-weight: bold;
+                font-size:1.8rem;
+
+            }
+        }
+    }
+    
+}

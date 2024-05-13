@@ -17,7 +17,8 @@ class DashboardController{
         $router->render('dashboard/index',[
             'titulo' => 'Tus Proyectos',
             'class' => 'proyectos',
-            'proyectos' => $proyectos
+            'proyectos' => $proyectos,
+            'propietarioId' => $_SESSION['id']
         ]);
     }
 
