@@ -47,6 +47,11 @@
         input{
             padding: .5rem;
             font-size: 1rem;
+            border: solid 2px v.$grisClaro;
+            border-radius: 7px;
+            -webkit-box-shadow: 5px 5px 20px 5px rgba(0,0,0,0.3);
+            -moz-box-shadow: 5px 5px 20px 5px rgba(0,0,0,0.3);
+            box-shadow: 5px 5px 20px 5px rgba(0,0,0,0.3);
 
             @include m.mediaq(v.$telefono){
                 font-size: 1.4rem;
@@ -72,11 +77,13 @@
         .submit-nueva-tarea{
             @include m.boton (v.$indigo, v.$blanco);
             margin: 2rem 0;
+            
         }
 
         .cerrar-modal{
             @include m.boton (v.$rojo, v.$blanco);
             margin: 2rem 0;
+            text-transform: uppercase;
         }
 
         &.animar{
