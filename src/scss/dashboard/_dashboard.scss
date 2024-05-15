@@ -11,6 +11,34 @@
 
     .principal{
         flex:1;
+        @include m.mediaq(v.$tablet) {
+            overflow: scroll;
+        }
+
+        &::-webkit-scrollbar {
+            -webkit-appearance: none;
+        }
+        
+        &::-webkit-scrollbar:vertical {
+            width:10px;
+        }
+        
+        &::-webkit-scrollbar-button:increment,.app::-webkit-scrollbar-button {
+            display: none;
+        } 
+        
+        &::-webkit-scrollbar:horizontal {
+            height: 10px;
+        }
+        
+        &::-webkit-scrollbar-thumb {
+            background-color: v.$indigo;
+            border-radius: 20px;
+        }
+        
+        &::-webkit-scrollbar-track {
+            border-radius: 10px;  
+        }
 
         
     }

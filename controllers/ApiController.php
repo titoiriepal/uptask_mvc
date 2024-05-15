@@ -17,6 +17,20 @@ class ApiController{
 
     public static function indexTarea(){
         
+        
+        $proyectoUrl = $_GET['url'];
+        if(!$proyectoUrl){
+            header("Location: /dashboard");
+        }
+        $proyecto = Proyecto::where('url', $proyectoUrl);
+        session_start();
+        if(!$proyecto || $_SESSION['id'] !== $proyecto->propietarioId){
+            $_SESSION = [];
+            header("Location: /");
+        }
+        $tareas = Tarea::belongsTo('proyectoId', $proyecto->id);
+        header("Content-type: application/json; charset=utf-8");
+        echo json_encode(['tareas' => $tareas], JSON_PRETTY_PRINT);
     }
 
     public static function crearTarea(){
@@ -43,7 +57,8 @@ class ApiController{
                 $respuesta = [
                     'tipo' => 'exito',
                     'id' => $resultado['id'],
-                    'mensaje' => 'Tarea agregada con éxito'
+                    'mensaje' => 'Tarea agregada con éxito',
+                    'proyectoId' => $tarea->proyectoId
                 ];
             }else{
                 $respuesta = [
