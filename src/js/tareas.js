@@ -17,7 +17,7 @@ async function obtenerTareas(){
         const resultado = await respuesta.json();
         tareas = resultado.tareas;
 
-        mostrarTareas(tareas);
+        mostrarTareas();
 
         
     } catch (error) {
@@ -26,7 +26,7 @@ async function obtenerTareas(){
     
 }
 
-function mostrarTareas(tareas){
+function mostrarTareas(){
     limpiarTareas();
     const listadoTareas = document.querySelector('#listado-tareas');
     
@@ -65,6 +65,9 @@ function mostrarTareas(tareas){
         btnEstadoTarea.classList.add(`${estados[tarea.estado].toLowerCase()}`);
         btnEstadoTarea.textContent = estados[tarea.estado];
         btnEstadoTarea.dataset.estadoTarea = tarea.estado;
+        btnEstadoTarea.ondblclick = function() {
+            cambiarEstadoTarea({...tarea});
+        }
 
         const btnEliminarTarea = document.createElement('BUTTON');
         btnEliminarTarea.classList.add('eliminar-tarea');
@@ -158,7 +161,7 @@ function mostrarAlerta(mensaje, tipo, referencia){
     const alerta = document.createElement('DIV');
     alerta.classList.add('alerta',tipo);
     alerta.textContent = mensaje;
-    referencia.insertBefore(alerta, referencia.nextElementSibiling);//Inserta la alerta despues del Legend
+    referencia.parentElement.insertBefore(alerta, referencia.nextElementSibling);//Inserta la alerta despues del Legend
     setTimeout(() => {
         alerta.remove();
     }, 5000);
@@ -199,8 +202,61 @@ async function agregarTarea(tarea){
 
             tareas = [...tareas, tareaObj]; //Tareas es igual al antiguo arreglo de tareas[...tareas] y le añadimos el nuevo objeto de tareas.
 
-            mostrarTareas(tareas);
+            mostrarTareas();
         }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+function cambiarEstadoTarea(tarea){
+    const nuevoEstado = tarea.estado === "1" ? "0" : "1"; //Si el estado es 1, lo cambiamos a 0, si es 0, lo cambiamos a 1.
+    tarea.estado = nuevoEstado
+
+    actualizarTarea(tarea);
+
+}
+
+async function actualizarTarea(tarea){
+
+    const{estado, id, nombre, proyectoId, activo} = tarea;
+    const datos = new FormData();
+    datos.append('id', id);
+    datos.append('nombre', nombre);
+    datos.append('estado', estado);
+    datos.append('proyectoId', proyectoId);
+    datos.append('activo', activo);
+    datos.append('url',obtenerProyecto());
+
+    try {
+        const url = `${location.origin}/api/tarea/actualizar`;
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        });
+
+        const resultado = await respuesta.json();
+        if(resultado.tipo === 'exito'){
+            //Actualizamos el DOM y mostramos los registros actualizados
+            mostrarAlerta(resultado.mensaje, resultado.tipo, document.querySelector('.contenedor-nueva-tarea'));
+            
+            tareas = tareas.map(tareaMemoria => {
+                if(tareaMemoria.id === resultado.tarea.id){
+                    tareaMemoria.estado = resultado.tarea.estado;
+                    
+                }
+                return tareaMemoria;
+            });
+
+            mostrarTareas();
+
+
+
+            
+        }else{
+            mostrarAlerta(resultado.mensaje, resultado.tipo, document.querySelector('.contenedor-nueva-tarea'));
+        }
+    
     } catch (error) {
         console.log(error);
     }

@@ -74,7 +74,36 @@ class ApiController{
 
     public static function actualizarTarea(){
         if($_SERVER["REQUEST_METHOD"] === "POST"){
-        
+            //Validar que el proyecto exista
+            $proyecto = Proyecto::where('url', $_POST['url']);
+            session_start();
+            if(!$proyecto || $proyecto->propietarioId !== $_SESSION['id']){
+                $respuesta = [
+                    'tipo' => 'error',
+                    'mensaje' => 'Hubo un error al actualizar la tarrea'
+                ];
+                header("Content-type: application/json; charset=utf-8");
+                echo json_encode($respuesta, JSON_PRETTY_PRINT);
+                return;
+            }
+
+            $tarea = new Tarea($_POST);
+            $resultado = $tarea->guardar();
+
+            if($resultado){
+                $respuesta = [
+                    'tipo' => 'exito',
+                    'tarea' => $tarea,
+                    'mensaje' => 'Actualizado correctamente'
+                ];
+            }else{
+                $respuesta = [
+                    'tipo' => 'error',
+                    'mensaje' => 'Hubo un error al actualizar la tarrea'
+                ];
+            }
+            header("Content-type: application/json; charset=utf-8");
+            echo json_encode($respuesta, JSON_PRETTY_PRINT);
         }
     }
 

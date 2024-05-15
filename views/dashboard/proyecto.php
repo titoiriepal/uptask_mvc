@@ -9,6 +9,7 @@
                 id="agregar-tarea"
             >&#43;Nueva tarea </button>
         </div>
+        <div class="marca"></div>
 
         <ul id="listado-tareas" class="listado-tareas">
 
