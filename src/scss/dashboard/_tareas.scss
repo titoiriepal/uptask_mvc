@@ -39,6 +39,12 @@
     p{
         font-size: 1.4rem;
         text-align: center;
+
+        &:hover{
+            cursor:pointer;
+            color:v.$negro;
+            font-weight: bold;
+        }
     }
 
     @include m.mediaq(v.$tablet){

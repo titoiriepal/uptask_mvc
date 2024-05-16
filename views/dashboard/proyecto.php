@@ -1,7 +1,7 @@
 <?php 
     include_once __DIR__ . '/header-dashboard.php'; 
 ?>
-    <div class="contenedor sm">
+    <div class="contenedor-sm">
         <div class="contenedor-nueva-tarea">
             <button
                 type="button"
@@ -9,7 +9,6 @@
                 id="agregar-tarea"
             >&#43;Nueva tarea </button>
         </div>
-        <div class="marca"></div>
 
         <form class="selected">
             <div class="option">
