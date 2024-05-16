@@ -93,5 +93,14 @@
                 background-color: darken(v.$rojo, 7%);
             }
         }
+
+        .activar-tarea{
+            background-color: v.$verde;
+            color: v.$blanco;
+
+            &:hover{
+                background-color: darken(v.$verde, 7%);
+            }
+        }
     }
 }
