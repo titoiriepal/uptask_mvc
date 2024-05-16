@@ -105,6 +105,9 @@ function imprimirTarea(tarea){
             btnEliminarTarea.classList.add('boton-opciones');
             btnEliminarTarea.textContent = 'Eliminar';
             btnEliminarTarea.dataset.idTarea = tarea.id;
+            btnEliminarTarea.ondblclick = function() {
+                confirmarEliminarTarea({...tarea});
+            }
 
             opcionesDiv.appendChild(btnEstadoTarea);
             opcionesDiv.appendChild(btnEliminarTarea);
@@ -272,9 +275,32 @@ function cambiarEstadoTarea(tarea){
 }
 
 function cambiarActivoTarea(tarea){
-    tarea.activo = "1";
+    const nuevoActivo = tarea.activo === "1" ? "0" : "1"; //Si el estado es 1, lo cambiamos a 0, si es 0, lo cambiamos a 1.
+    tarea.activo = nuevoActivo;
 
     actualizarTarea(tarea);
+}
+
+function confirmarEliminarTarea(tarea){
+    Swal.fire({
+        title: "Quieres borrar la tarea?",
+        text: `${tarea.nombre} será borrada`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Borrar Tarea"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "Tarea Eliminada",
+            text: "La tarea ya no está activa",
+            icon: "success"
+          });
+          //Cambiar el activo de la tarea
+          cambiarActivoTarea(tarea);
+        }
+      });
 }
 
 async function actualizarTarea(tarea){

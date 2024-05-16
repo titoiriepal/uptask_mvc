@@ -107,9 +107,4 @@ class ApiController{
         }
     }
 
-    public static function eliminarTarea(){
-        if($_SERVER["REQUEST_METHOD"] === "POST"){
-        
-        }        
-    }
 }

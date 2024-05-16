@@ -91,7 +91,7 @@ class DashboardController{
 
         $router->render('dashboard/proyecto',[
             'titulo' => $proyecto->proyecto,
-            'script' => '<script src="/build/js/tareas.js"></script>'
+            'script' => '<script src="/build/js/tareas.js"></script><script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>'
         ]);
 
     }

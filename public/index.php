@@ -49,7 +49,6 @@ $router->post('/api/proyectos', [ApiController::class, 'allProyects']);
 $router->get('/api/tareas', [ApiController::class, 'indexTarea']);
 $router->post('/api/tarea', [ApiController::class, 'crearTarea']);
 $router->post('/api/tarea/actualizar', [ApiController::class, 'actualizarTarea']);
-$router->post('/api/tarea/eliminar', [ApiController::class, 'eliminarTarea']);
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();
