@@ -10,24 +10,34 @@
             >&#43;Nueva tarea </button>
         </div>
 
-        <form class="selected">
-            <div class="option">
-                
-                <input name="option-dashboard" type="radio" value="activas" id="option-activas" checked="checked">
-                <label for="option-activas">Activas</label>
-            </div>
-            <div class="option">
-                
-                <input name="option-dashboard" type="radio" value="inactivas" id="option-inactivas" >
-                <label for="option-inactivas">Eliminadas</label>
-            </div>
-            <div class="option">
-                
-                <input name="option-dashboard" type="radio" value="todas" id="option-todas" >
-                <label for="option-todas">Todas</label>
+        <div class="menu-tareas">
+            
+            <form class="selected">
+                <div class="option">
+                    
+                    <input name="option-dashboard" type="radio" value="activas" id="option-activas" checked="checked">
+                    <label for="option-activas">Pendientes</label>
+                </div>
+                <div class="option">
+                    
+                    <input name="option-dashboard" type="radio" value="completas" id="option-inactivas" >
+                    <label for="option-inactivas">Completas</label>
+                </div>
+                <div class="option">
+                    
+                    <input name="option-dashboard" type="radio" value="todas" id="option-todas" >
+                    <label for="option-todas">Todas</label>
 
-            </div>
-        </form>
+                </div>
+
+                <div class="option">
+                    
+                    <input name="option-dashboard" type="radio" value="borradas" id="option-borradas" >
+                    <label for="option-borradas">Eliminadas</label>
+
+                </div>
+            </form>
+        </div>
 
         <ul id="listado-tareas" class="listado-tareas">
 

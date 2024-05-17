@@ -13,6 +13,7 @@
 
 
 
+
 async function obtenerTareas(){
     const proyectoUrl = obtenerProyecto();
     try {
@@ -34,20 +35,20 @@ async function obtenerTareas(){
     
 }
 
-
-
 function mostrarTareas(){
     limpiarTareas();
     const listadoTareas = document.querySelector('#listado-tareas');
     
-
     if(tareas.length === 0){
         const textoNotareas = document.createElement('LI');
         textoNotareas.textContent = 'No hay tareas';
         textoNotareas.classList.add('no-tareas');
         listadoTareas.appendChild(textoNotareas);
+
+
         return;
     }
+
 
     const options = document.querySelectorAll('input[name="option-dashboard"]');
     let printValues = '';
@@ -60,16 +61,21 @@ function mostrarTareas(){
     });
 
     tareas.forEach(tarea => {
-
-        if(printValues === 'inactivas' && tarea.activo === '0'){//Si hemos seleccionado borradas y la tarea no está activa
-            imprimirTarea(tarea);
-        }else if(printValues === 'activas' && tarea.activo === '1'){//Si hemos seleccionado activas y la tarea está activa
-            imprimirTarea(tarea);
-        }else if(printValues === 'todas'){//Si hemos seleccionado todas
+        if(tarea.activo === '1'){
+            if(printValues === 'completas' && tarea.estado === '1'){//Si hemos seleccionado borradas y la tarea no está activa o esta completa
+                imprimirTarea(tarea);
+            }else if(printValues === 'activas' && tarea.estado === '0'){//Si hemos seleccionado activas y la tarea está activa
+                imprimirTarea(tarea);
+            }else if(printValues === 'todas'){//Si hemos seleccionado todas
+                imprimirTarea(tarea);
+            }
+        }else if(printValues === 'borradas'){
             imprimirTarea(tarea);
         }
 
     });
+
+    
 }
 
 function imprimirTarea(tarea){
@@ -144,6 +150,7 @@ function opcionesTareas(){
     const options = document.querySelectorAll('input[name="option-dashboard"]');
     options.forEach(option => {
         option.addEventListener("input", ()=>{
+
             mostrarTareas();
         });
     });

@@ -17,12 +17,21 @@
 .listado-tareas{
     list-style: none;
     padding: 0;
-    margin-top: 3rem;
+    margin-top: 1.5rem;
+
 
     .no-tareas{
         text-align: center;
         
     }
+}
+
+.menu-tareas{
+    background-color: v.$blanco;
+    border-radius: 8px;
+    border-bottom: 2px solid darken(v.$grisClaro,12%);
+    border-right: 2px solid darken(v.$grisClaro,12%);
+    padding: 1rem 2rem;
 }
 
 .tarea{
