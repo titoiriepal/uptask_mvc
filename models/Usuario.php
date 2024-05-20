@@ -83,4 +83,22 @@ class Usuario extends ActiveRecord{
 
         return self::$alertas;
     }
+
+    public function validarPerfil(){
+        if(!$this->nombre){
+            self::$alertas['error'][] = 'Añade un nombre para el usuario.';
+        }else if( strlen($this->nombre) > 60){
+            self::$alertas['error'][] = 'El nombre no debe superar los 60 caracteres';
+        }
+
+        if(!$this->email){
+            self::$alertas['error'][] = 'Por favor, introduce tu email';
+        }else if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)){
+            self::$alertas['error'][] = 'Por favor, introduce un email valido';
+        }
+
+
+
+        return self::$alertas;
+    }
 }

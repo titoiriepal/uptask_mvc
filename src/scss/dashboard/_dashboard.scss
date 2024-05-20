@@ -102,3 +102,11 @@
     }
     
 }
+
+.enlace{
+    color: v.$indigo;
+    font-weight: bold;
+    &:hover{
+        color: darken(v.$indigo, 15%);
+    }
+}

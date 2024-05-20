@@ -38,6 +38,9 @@ $router->get('/crear-proyecto', [DashboardController::class, 'crear']);
 $router->post('/crear-proyecto', [DashboardController::class, 'crear']);
 $router->get('/proyecto', [DashboardController::class, 'proyecto']);
 $router->get('/perfil', [DashboardController::class, 'perfil']);
+$router->post('/perfil', [DashboardController::class, 'perfil']);
+$router->get('/cambiar_password', [DashboardController::class, 'cambiar_password']);
+$router->post('/cambiar_password', [DashboardController::class, 'cambiar_password']);
 
 
 /*********************ZONA API *************************************************/
